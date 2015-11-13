@@ -35,7 +35,7 @@ public class Main {
 
         Date a = new Date();
         System.out.println(a);
-        Date lastSessionDate = new Date(new Date().getTime()-TrendConstants.MIN_SESSION);
+        Date lastSessionDate = new Date(new Date().getTime()-TrendConstants.MAX_SESSION_MIN);
         List<PositionData> result=   Main.getRandomSetWithLastSessionDateWithCalendar(lastSessionDate);
         System.out.println(result);
     }
