@@ -22,7 +22,7 @@ public class Main {
             data.startCurrentSessionTime =lastSessionDate;
             lastSessionDate = new Date(lastSessionDate.getTime()-RandomUtils.randomBetween( TrendConstants.MAX_SESSION_INTERVAL, TrendConstants.MAX_SESSION_MIN));
             data.endPreviousSessionTime = lastSessionDate;
-            lastSessionDate=new Date(lastSessionDate.getTime()-120*60*60*1000);
+            lastSessionDate=new Date(lastSessionDate.getTime()-RandomUtils.randomBetween( TrendConstants.MAX_SESSION_INTERVAL, TrendConstants.MAX_SESSION_MIN));/*-120*60*60*1000);*/
             result.add(data);
         }
         return result;
