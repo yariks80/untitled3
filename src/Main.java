@@ -9,19 +9,20 @@ public class Main {
 
     public static List<PositionData> getRandomSetWithLastSessionDateWithCalendar(Date lastSessionDate) {
 
-        List<Date> sessionIntervals = new ArrayList();
-        for (int i = 0; i < TrendConstants.NUMBER_OF_SESSIONS; i++) {
-          sessionIntervals.add(new Date(RandomUtils.randomBetween(TrendConstants.MAX_SESSION_MIN,TrendConstants.MAX_SESSION_INTERVAL)));
-
-        }
+//        ArrayList<Date> sessionIntervals = new ArrayList<>();
+//        for (int i = 0; i < TrendConstants.NUMBER_OF_SESSIONS; i++) {
+//          sessionIntervals.add(new Date(RandomUtils.randomBetween(lastSessionDate.getTime()-TrendConstants.MAX_SESSION_INTERVAL, lastSessionDate.getTime()-TrendConstants.MAX_SESSION_MIN)));
+//
+//        }
 
 
         List<PositionData> result = new ArrayList();
-        for (Date interval : sessionIntervals) {
+        for (int i = 0; i < TrendConstants.NUMBER_OF_SESSIONS; i++) {
             PositionData data = random();
             data.startCurrentSessionTime =lastSessionDate;
-            lastSessionDate = new Date(lastSessionDate.getTime() - interval.getTime());
+            lastSessionDate = new Date(lastSessionDate.getTime()-RandomUtils.randomBetween( TrendConstants.MAX_SESSION_INTERVAL, TrendConstants.MAX_SESSION_MIN));
             data.endPreviousSessionTime = lastSessionDate;
+            lastSessionDate=new Date(lastSessionDate.getTime()-120*60*60*1000);
             result.add(data);
         }
         return result;
